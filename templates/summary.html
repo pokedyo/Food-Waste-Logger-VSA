@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Wastage Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Daily Food Wastage Summary</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>1st-3rd Grade</th>
+            <th>4th-5th Grade</th>
+            <th>6th-7th Grade</th>
+            <th>8th-12th Grade</th>
+            <th>Total (School)</th>
+        </tr>
+        {% for record in summary_data %}
+        <tr>
+            <td>{{ record[0] }}</td>
+            <td>{{ record[1] }} kg</td>
+            <td>{{ record[2] }} kg</td>
+            <td>{{ record[3] }} kg</td>
+            <td>{{ record[4] }} kg</td>
+            <td><strong>{{ record[5] }} kg</strong></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+
+    <form action="/reset" method="POST">
+        <button type="submit">Reset Table</button>
+    </form>
+
+    <a href="/">Back to Logging</a>
+</body>
+</html>
