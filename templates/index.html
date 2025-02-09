@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Wastage Logger</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li> <!-- Link to the home page -->
+            <li><a href="/summary">View Summary</a></li> <!-- Link to the summary page -->
+        </ul>
+    </nav>
+    <header>
+        <h1>Food Wastage Logger</h1>
+    </header>
+
+    <section id="log-wastage">
+        <h2>Log Food Wastage</h2>
+        <form action="/log" method="post">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="group_name">Group:</label>
+            <select id="group_name" name="group_name">
+                <option value="1st-3rd">1st to 3rd</option>
+                <option value="4th-5th">4th to 5th</option>
+                <option value="6th-7th">6th to 7th</option>
+                <option value="8th-12th">8th to 12th</option>
+            </select>
+            
+            <label for="amount">Amount (kg):</label>
+            <input type="number" id="amount" name="amount" step="0.01" required>
+            
+            <button type="submit">Log</button>
+        </form>
+    </section>
+
+    <section id="summary">
+        <h2>Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Group</th>
+                    <th>Total Wastage (kg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in food_wastage %}
+                <tr>
+                    <td>{{ record[0] }}</td>
+                    <td>{{ record[1] }}</td>
+                    <td>{{ record[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
