@@ -1,0 +1,8 @@
+{
+  "name": "Food Waste Logger",
+  "short_name": "WasteLogger",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50"
+}
