@@ -1,7 +1,12 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, send_from_directory
 import sqlite3
 
 app = Flask(__name__)
+
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory('static', filename, mimetype='application/json' if filename.endswith('.json') else None)
+
 
 # Initialize the database
 def init_db():
